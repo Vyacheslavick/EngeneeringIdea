@@ -3,20 +3,22 @@ package com.example.slavick.engeneeringidea;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
+import android.arch.persistence.room.TypeConverters;
+
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
-@Entity
+@Entity()
+@TypeConverters({UserConverter.class})
 public class User {
 
-    @SerializedName("id")
     @PrimaryKey
+    int age;
+    @SerializedName("id")
     String id;
-
     boolean isActive;
     String balance;
     String picture;
-    int age;
     String eyeColour;
     String name;
     String gender;
@@ -26,16 +28,17 @@ public class User {
     String address;
     String about;
     String registered;
-    ArrayList<String> tags;
-    ArrayList<Friends> friends;
+    Tags tags;
+    Friends friends;
     String favoriteFruit;
 
-    public User(String id, boolean isActive, String balance, String picture, int age, String eyeColour, String name, String gender, String company, String email, String phone, String address, String about, String registered, ArrayList<String> tags, ArrayList<Friends> friends, String favoriteFruit) {
+
+    public User(int age, String id, boolean isActive, String balance, String picture, String eyeColour, String name, String gender, String company, String email, String phone, String address, String about, String registered, Tags tags,Friends friends, String favoriteFruit) {
+        this.age = age;
         this.id = id;
         this.isActive = isActive;
         this.balance = balance;
         this.picture = picture;
-        this.age = age;
         this.eyeColour = eyeColour;
         this.name = name;
         this.gender = gender;
@@ -68,7 +71,7 @@ public class User {
                 ", about='" + about + '\'' +
                 ", registered='" + registered + '\'' +
                 ", tags=" + tags +
-                ", friends=" + friends +
+//                ", friends=" + friends +
                 ", favoriteFruit='" + favoriteFruit + '\'' +
                 '}';
     }

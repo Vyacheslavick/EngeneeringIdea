@@ -1,11 +1,20 @@
 package com.example.slavick.engeneeringidea;
 
-public class Friends {
-    int id;
-    String name;
+import java.util.List;
 
-    public Friends(int id, String name) {
-        this.id = id;
-        this.name = name;
+public class Friends {
+    List<Friend> friends;
+
+
+    public Friends(List<Friend> friends) {
+        this.friends = friends;
+    }
+
+    public List<Friend> getFriends() {
+        return friends;
+    }
+
+    public void setFriends(List<Friend> friends) {
+        this.friends = friends;
     }
 }
