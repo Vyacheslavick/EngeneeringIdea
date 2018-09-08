@@ -7,10 +7,12 @@ import android.arch.persistence.room.TypeConverters;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.ArrayList;
+import java.io.Serializable;
+
+
 @Entity()
 @TypeConverters({UserConverter.class})
-public class User {
+public class User implements Serializable {
 
     @PrimaryKey
     int age;
