@@ -18,4 +18,6 @@ public interface UserDao {
     @Query("SELECT * FROM user WHERE name = :name")
     User getUserWithName(String name);
 
+
+
 }

@@ -25,18 +25,10 @@ public class UserInformationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        String tag = "";
-        String friendie = "";
-        String string;
         String seek = getIntent().getStringExtra("name");
         DaoListUsers db = Room.databaseBuilder(getApplicationContext(), DaoListUsers.class, "users").build();
         User user = db.getUserDao().getUserWithName(seek);
-        for (String s : user.tags.tags){
-            tag += s + ", ";
-        }
-        for (Friend friend : user.friends.friends){
-            friendie += friend.name + ", ";
-        }
+        String string;
         if (user.isActive){
             string = "active";
         } else {
@@ -66,9 +58,9 @@ public class UserInformationActivity extends AppCompatActivity {
         registered = findViewById(R.id.registered);
         registered.setText(user.registered);
         tags = findViewById(R.id.tags);
-        tags.setText(tag);
+        tags.setText(user.getTags());
         friends = findViewById(R.id.friends);
-        friends.setText(friendie);
+        friends.setText(user.getFriends());
         about = findViewById(R.id.about);
         about.setText(user.about);
     }

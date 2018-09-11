@@ -16,6 +16,9 @@ public class Retrofit {
     interface ApiInterface{
         @GET("/v2/59c92a123f0000780183f72d")
         void getUsers(Callback<List<User>> callback);
+
+        @GET("/v2/59c92a123f0000780183f72d")
+        void getWrongUsers(Callback<List<WrongUser>> callback);
     }
     public static void initialize(){
         RestAdapter restAdapter = new RestAdapter.Builder()
@@ -28,5 +31,7 @@ public class Retrofit {
     public static void getUsers(Callback<List<User>> callback){
         apiInterface.getUsers(callback);
     }
+
+    public static void getWrongUsers(Callback<List<WrongUser>> callback) {apiInterface.getWrongUsers(callback);}
 
 }
